@@ -26,19 +26,23 @@ async function ApiRequest(baseUrl){
     return data;
 }
 
+function decideBetweenPictureAndVideo(data){
+
+    if(data.media_type==="image"){
+       return  `<img src="${data.hdurl}">`;
+    }
+    if(data.media_type==="video"){
+        return `<iframe src=${data.url}>`
+    }
+}
+
 async function createPage(baseUrl){
     const data = await ApiRequest(baseUrl);
+    let source= decideBetweenPictureAndVideo(data);
     const explanation = data.explanation ;
-    const mediatype = data.media_type;
     const title= data.title;
-    const hdurl = data.hdurl;
-    let source;
-    if(mediatype==="image"){
-        source = `<img src="${hdurl}">`;
-    }
-    if(mediatype==="video"){
-        source = `<iframe src=${data.url}>`
-    }
+    
+    
     baseDiv.innerHTML=`<h1 style="text-align:center">${title}</h1><p>${explanation}</p><p>${source}</p>`
 
 
