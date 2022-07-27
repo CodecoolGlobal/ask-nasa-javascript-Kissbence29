@@ -1,5 +1,5 @@
 function main(){
-    console.log(Date.now());
+
 const baseDiv = document.querySelector("#root");
 let today = new Date().toISOString().slice(0, 10)
 const baseUrl = "https://api.nasa.gov/planetary/apod?api_key=1Y2xps6PFrqfili1DbLJ26MQOXxHk3qiOZJvhCe9&date=";
@@ -7,18 +7,15 @@ const submit = document.querySelector("#submit")
 submit.addEventListener("click",(e)=>{
     e.preventDefault();
     const date= document.querySelector("#date").value;
-    console.log(date);
     createPage(decideUrl(date));
     
 })
 
 function decideUrl(date){
     if(date===""){
-        console.log(baseUrl)
         return baseUrl;
     }
     else{
-        console.log(baseUrl+`&date=${date}`);
         return baseUrl+ date
     }
 }
@@ -31,7 +28,6 @@ async function ApiRequest(baseUrl){
 
 async function createPage(baseUrl){
     const data = await ApiRequest(baseUrl);
-    console.log(data);
     const explanation = data.explanation ;
     const mediatype = data.media_type;
     const title= data.title;
