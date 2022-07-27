@@ -14,7 +14,6 @@ submit.addEventListener("click",(e)=>{
 })
 
 async function ApiRequest(baseUrl){
-    console.log(baseUrl);
     const response = await fetch(baseUrl);
     const data = await response.json();
     return data;
@@ -31,7 +30,6 @@ function decideBetweenPictureAndVideo(data){
 }
 
 async function createPage(baseUrl){
-    console.log(date);
     const data = await ApiRequest(baseUrl);
     let source= decideBetweenPictureAndVideo(data);
     const explanation = data.explanation ;
