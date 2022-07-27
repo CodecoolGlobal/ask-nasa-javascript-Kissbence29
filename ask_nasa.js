@@ -4,6 +4,7 @@ const baseDiv = document.querySelector("#root");
 const inputDate = document.querySelector("#date");
 let today = new Date().toISOString().slice(0, 10);
 inputDate.value = today;
+inputDate.max = today;
 const baseUrl = "https://api.nasa.gov/planetary/apod?api_key=1Y2xps6PFrqfili1DbLJ26MQOXxHk3qiOZJvhCe9&date=";
 const submit = document.querySelector("#submit")
 submit.addEventListener("click",(e)=>{
