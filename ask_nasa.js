@@ -1,6 +1,6 @@
 function main(){
 
-   const baseDiv = document.querySelector("#root");
+const baseDiv = document.querySelector("#root");
 const inputDate = document.querySelector("#date");
 let today = new Date().toISOString().slice(0, 10);
 inputDate.value = today;
