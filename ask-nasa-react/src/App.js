@@ -1,5 +1,7 @@
 import './App.css';
 import {useState,useEffect} from 'react';
+import Calendar from './Components/Calendar';
+import Data from './Components/Data';
 
 let now = new Date();
 let baseDate=now.toISOString().slice(0, 10);
@@ -27,14 +29,8 @@ function App() {
   }
   return (
     <div className="App">
-       <input id="date" type="date" value={baseDate}  onChange={onChange}/>
-       <h1>{data.title}</h1>
-       <div>
-       <h3>{data.date}</h3>
-       </div>
-      <p>{data.explanation}</p>
-      {data.media_type==="image"?<img src={data.hdurl} alt=""/>:""}
-      {data.media_type==="video"?<iframe src={data.url} title={data.title}/>:""}
+      <Calendar baseDate={baseDate} onChange={onChange}/>
+      <Data data ={data}/>
     </div>
   );
 }
