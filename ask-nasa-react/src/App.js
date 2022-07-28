@@ -12,15 +12,29 @@ function App() {
   const [url,setUrl]= useState(baseUrl+baseDate);
   const [data,setData] = useState({});
 
-  useEffect(function getData(){
-    fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-   .then((data)=>{
-    setData(data);
-   })
-    },[url])
+//using .then promise
+
+  // useEffect(function getData(){
+  //   fetch(url)
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //  .then((data)=>{
+  //   setData(data);
+  //  })
+  //   },[url])
+
+
+  //using async await promise
+
+  useEffect(()=>{
+    const getData= async()=>{
+      const response = await fetch(url);
+      const data = await response.json();
+      setData(data);
+    }
+    getData();
+  },[url]);
 
   function onChange(){
     setUrl(baseUrl+input.value);
